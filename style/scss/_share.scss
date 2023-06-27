@@ -43,7 +43,7 @@
 		height: calc(100vh - 58px);
 		background-color: $primaryColor;
 		transform: translateX(100%);
-		._showMenu &{
+		._showMenu & {
 			transform: translateX(0);
 		}
 	}
