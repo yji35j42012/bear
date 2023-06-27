@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html id="version" lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>BearSu</title>
+	<link rel="stylesheet" href="./style/css/all.css" />
+</head>
+
+<body>
+	<div id="app" class="wrap">
+		<header :class="['head', menuShow?'_showMenu':'']">
+			<h1 class="logo"><img src="./images/logo.png" alt=""></h1>
+			<ul class="menu">
+				<li class="menu_item">
+					<router-link to="">首頁</router-link>
+				</li>
+				<li class="menu_item">
+					<router-link to="">廚藝教室</router-link>
+				</li>
+				<li class="menu_item">
+					<router-link to="">節氣食補</router-link>
+				</li>
+				<li class="menu_item">
+					<router-link to="">素食地圖</router-link>
+				</li>
+				<li class="menu_item">
+					<router-link to="">相關文章</router-link>
+				</li>
+				<li class="menu_item _car">
+					<router-link to=""></router-link>
+				</li>
+				<li class="menu_item _user">
+					<router-link to=""></router-link>
+				</li>
+			</ul>
+			<button class="menu_btn" @click="menuHandler">
+				<span class="menu_btn_line"></span>
+			</button>
+		</header>
+		<div class="content"></div>
+	</div>
+
+	<script src="./js/libs/axios.js"></script>
+	<script src="./js/libs/vue_2_6_9.js"></script>
+	<script src="./js/libs/vue-router.js"></script>
+	<script src="./js/libs/http-vue-loader.js"></script>
+	<script src="./js/libs/vuex_3_0_1.js"></script>
+	<script src="./js/libs/lottie.min.js"></script>
+	<script src="./js/icon_all.js"></script>
+	<script src="./store/store.js"></script>
+
+	<!-- <script src="./js/pet.js"></script>
+	<script src="./js/ios.js"></script> -->
+
+	<!-- <script src="./js/emergency.js"></script> -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.0/gsap.min.js"></script> -->
+	<script>
+		const routes = [
+			{
+				path: "/",
+				component: httpVueLoader("./page/home.vue"),
+			},
+			{
+				path: "/home",
+				component: httpVueLoader("./page/home.vue"),
+			},
+		];
+		const router = new VueRouter({
+			// mode: 'history',
+			routes: routes, // (缩写) 相当于 routes: routes
+		});
+		var vue = new Vue({
+			el: "#app",
+			data() {
+				return {
+					menuShow: false
+				};
+			},
+			components: {
+				// menubar: httpVueLoader("./components/Menu.vue"),
+			},
+			router,
+			mounted() {
+				// store.dispatch("SET_PETDATA_ACTION", this.oldpetData)
+			},
+			computed: {},
+			watch: {
+				$route(to, from) {
+					var now = this.$route.path;
+					if ((now.split('home')[0] == 'home' || now.split('home')[0] == '/') && now.split('home')[1] !== '') {
+						this.nowPage = "detail";
+						store.dispatch("PAGE", "detail");
+					} else if (now == "/" || now == 'home') {
+						this.nowPage = "home";
+						store.dispatch("PAGE", "home");
+					} else {
+						store.dispatch("SET_LOADING", true);
+						this.nowPage = now.split("/")[1];
+						store.dispatch("PAGE", now.split("/")[1]);
+					}
+				},
+			},
+			methods: {
+				menuHandler() {
+					this.menuShow = !this.menuShow
+				},
+			},
+		});
+	</script>
+</body>
+
+</html>

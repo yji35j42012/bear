@@ -1,0 +1,1 @@
+var icon_all = {};
