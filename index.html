@@ -69,26 +69,16 @@
 						</ul>
 					</label>
 				</div>
-				<ul class="card">
-					<li class="card_item">
-						<div class="card_item_pic">
-							<img src="./images/map/map1.png" alt="">
-						</div>
-						<div class="card_item_txt">
-							<h3 class="title">全國素食-大安復興店</h3>
-							<h4 class="address msgL" data-msgL="地址：">台北市大 安區復興南路二段314號</h4>
-							<div class="time msgL" data-msgL="營業時間：">每日早上10：30～13：50，下午16：30～20：00</div>
-							<div class="phone msgL" data-msgL="電話：">02-27361168</div>
-							<ul class="sort">
-								<li class="sort_item">全素</li>
-								<li class="sort_item">蛋素</li>
-								<li class="sort_item">奶素</li>
-							</ul>
-						</div>
-					</li>
+				<ul class="page">
+					<li class="page_prev"></li>
+					<li class="page_item">1</li>
+					<li class="page_item">2</li>
+					<li class="page_item">3</li>
+					<li class="page_next"></li>
 				</ul>
 			</div>
 		</div>
+		<footer class="footer">Copyright © {{year}} BearSu. All rights reserved.</footer>
 	</div>
 
 	<script src="./js/libs/axios.js"></script>
@@ -119,7 +109,9 @@
 			el: "#app",
 			data() {
 				return {
-					menuShow: false
+					year: new Date().getFullYear(),
+					menuShow: false,
+					icon_all: icon_all
 				};
 			},
 			components: {

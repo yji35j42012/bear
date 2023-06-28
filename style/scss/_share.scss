@@ -19,8 +19,10 @@ h4 {
 .normal_sel {
 	position: relative;
 	display: inline-block;
-	height: 28px;
-	padding: 0 14px;
+	width: 100%;
+	max-width: 195px;
+	height: 36px;
+
 	border: 2px solid #333;
 	background-color: #fff6e9;
 	border-radius: 8px;
@@ -51,18 +53,61 @@ h4 {
 		font-weight: 600;
 		letter-spacing: 4.8px;
 	}
+
 	// .normal_sel_txt
 	&_txt {
-		display: block;
+		position: relative;
+		@include d_f(flex, none, center);
 		width: 100%;
 		height: 100%;
+		padding: 0 14px;
 		color: $primaryColor;
 		font-size: 14px;
 		font-weight: 500;
 		line-height: 160%;
 		letter-spacing: 1.4px;
 		border-radius: 8px;
+		@extend %hand;
+		&::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 14px;
+			display: block;
+			width: 28px;
+			height: 28px;
+			margin: auto;
+			background: url("../../images/icon/icon_down.svg") no-repeat
+				center/contain;
+		}
 	}
+}
+.normal_btn {
+	height: 38px;
+	font-size: 14px;
+	font-family: Inter;
+	font-weight: 500;
+	line-height: 160%;
+	letter-spacing: 1.4px;
+	border-radius: 8px;
+	border: 2px solid #333;
+	background: $primaryColor;
+	color: #fff;
+	box-shadow: 4px 4px 0px 0px #333;
+	@extend %transition;
+	@extend %hand;
+	@include hoverHandler {
+		transform: translate(4px, 4px);
+		box-shadow: 0px 0px 0px 0px #333;
+	}
+}
+
+.shadow {
+	border: 2px solid #333;
+	box-shadow: 4px 4px 0px 0px #333;
+	background: #fff6e9;
+	border-radius: 20px;
 }
 .msgL {
 	&::before {
@@ -76,12 +121,30 @@ h4 {
 	padding-top: 56px;
 	background-color: #e5e5e5;
 }
+.content {
+	width: 100%;
+	height: 100%;
+	padding: 48px 20px;
+	// .content_head
+	&_head {
+		@include d_f(flex, center, center);
+	}
+	// .content_pic
+	&_pic {
+		width: 100%;
+		max-width: 250px;
+		margin-left: 50px;
+
+		opacity: 0;
+	}
+}
 .container {
 	width: 100%;
 	max-width: 1140px;
 	margin: auto;
 }
 .head {
+	z-index: 10;
 	flex: none;
 	position: fixed;
 	top: 0;
@@ -96,22 +159,16 @@ h4 {
 		padding-right: 0;
 	}
 }
-.content {
+.footer {
+	@include d_f(flex, center, center);
 	width: 100%;
-	height: 100%;
-	padding-top: 48px;
-	// .content_head
-	&_head {
-		@include d_f(flex, center, center);
-	}
-	// .content_pic
-	&_pic {
-		width: 100%;
-		max-width: 250px;
-		margin-left: 50px;
-
-		opacity: 0;
-	}
+	height: 40px;
+	background-color: $primaryColor;
+	color: $white;
+	font-size: 16px;
+	font-family: Inter;
+	font-weight: 500;
+	border-top: 2px solid #333;
 }
 .logo {
 	width: 100px;
@@ -244,16 +301,9 @@ h4 {
 	width: 100%;
 	margin-top: 85px;
 }
-
 .card {
 	width: 100%;
 	margin-top: 48px;
-	padding: 24px;
-	border-radius: 20px;
-	border: 2px solid #333;
-	background: #fff6e9;
-	box-shadow: 4px 4px 0px 0px #333;
-
 	.address,
 	.time,
 	.phone,
@@ -262,7 +312,12 @@ h4 {
 	}
 	// .card_item
 	&_item {
+		position: relative;
 		@include d_f(flex);
+		padding: 24px;
+		& + & {
+			margin-top: 48px;
+		}
 		// .card_item_pic
 		&_pic {
 			overflow: hidden;
@@ -272,15 +327,28 @@ h4 {
 		}
 		// .card_item_txt
 		&_txt {
-			@include d_f(flex,center);
+			@include d_f(flex, center);
 			flex-direction: column;
 			color: #333;
+
+			.normal_btn {
+				position: absolute;
+				right: 24px;
+				bottom: 24px;
+				width: 100%;
+				max-width: 130px;
+			}
+			.icon_collect {
+				position: absolute;
+				top: 24px;
+				right: 24px;
+			}
 		}
 	}
 }
 .sort {
 	@include d_f(flex);
-	// padding: 5px 0;
+	padding: 5px 0;
 	// .sort_item
 	&_item {
 		display: inline-block;
@@ -291,5 +359,54 @@ h4 {
 		& + & {
 			margin-left: 12px;
 		}
+	}
+}
+.page {
+	@include d_f(flex, center);
+	margin-top: 48px;
+	li {
+		width: 36px;
+		height: 36px;
+		background-color: $primaryColor;
+		@extend %transition;
+		@extend %hand;
+
+		@include hoverHandler {
+			opacity: 0.7;
+		}
+	}
+	// .page_item
+	&_item {
+		@include d_f(flex, center, center);
+		color: $white;
+		font-size: 20px;
+		font-family: Inter;
+		font-weight: 600;
+		line-height: 160%;
+	}
+
+	&_prev,
+	&_next {
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 28px 28px;
+	}
+	// .page_prev
+	&_prev {
+		background-image: url("../../images/icon/icon_left.svg");
+		border-top-left-radius: 8px;
+		border-bottom-left-radius: 8px;
+	}
+	// .page_next
+	&_next {
+		background-image: url("../../images/icon/icon_right.svg");
+		border-top-right-radius: 8px;
+		border-bottom-right-radius: 8px;
+	}
+}
+.icon_collect {
+	@extend %hand;
+	svg {
+		fill: #fff;
 	}
 }
