@@ -69,6 +69,7 @@
 						</ul>
 					</label>
 				</div>
+				<card :card_obj="mapData"></card>
 				<ul class="page">
 					<li class="page_prev"></li>
 					<li class="page_item">1</li>
@@ -111,11 +112,20 @@
 				return {
 					year: new Date().getFullYear(),
 					menuShow: false,
-					icon_all: icon_all
+					icon_all: icon_all,
+					mapData: [
+						{
+							title: "全國素食-大安復興店",
+							address: "台北市大 安區復興南路二段314號",
+							time: "每日早上10：30～13：50，下午16：30～20：00",
+							phone: "02-27361168",
+						},
+
+					]
 				};
 			},
 			components: {
-				// menubar: httpVueLoader("./components/Menu.vue"),
+				card: httpVueLoader("./components/Card.vue"),
 			},
 			router,
 			mounted() {
