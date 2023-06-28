@@ -20,28 +20,37 @@ h4 {
 	position: relative;
 	display: inline-block;
 	width: 100%;
-	max-width: 195px;
+
 	height: 36px;
 
 	border: 2px solid #333;
 	background-color: #fff6e9;
 	border-radius: 8px;
+	@include minmw(M) {
+		max-width: 195px;
+		& + &:after {
+			content: "";
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: -57px;
+			display: block;
+			width: 18px;
+			height: 18px;
+			margin: auto 0;
+			background: url("../../images/icon/icon_trangle.svg") no-repeat
+				center/contain;
+		}
+	}
 	& + & {
-		margin-left: 114px;
+		@include minmw(M) {
+			margin-left: 114px;
+		}
+		@include mw(M) {
+			margin-top: 50px;
+		}
 	}
-	& + &:after {
-		content: "";
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: -57px;
-		display: block;
-		width: 18px;
-		height: 18px;
-		margin: auto 0;
-		background: url("../../images/icon/icon_trangle.svg") no-repeat
-			center/contain;
-	}
+
 	&:before {
 		content: attr(data-txt);
 		position: absolute;
@@ -128,20 +137,29 @@ h4 {
 	// .content_head
 	&_head {
 		@include d_f(flex, center, center);
+		@include mw(M) {
+			flex-direction: column-reverse;
+		}
 	}
 	// .content_pic
 	&_pic {
 		width: 100%;
 		max-width: 250px;
 		margin-left: 50px;
-
-		opacity: 0;
+		@include mw(M) {
+			margin-left: 0;
+			margin-bottom: 32px;
+		}
+		// opacity: 0;
 	}
 }
 .container {
 	width: 100%;
 	max-width: 1140px;
 	margin: auto;
+	@include mw(M) {
+		max-width: 768px;
+	}
 }
 .head {
 	z-index: 10;
@@ -300,6 +318,9 @@ h4 {
 	@include d_f(flex, center);
 	width: 100%;
 	margin-top: 85px;
+	@include mw(M) {
+		flex-direction: column;
+	}
 }
 .card {
 	width: 100%;
@@ -309,12 +330,19 @@ h4 {
 	.phone,
 	.sort {
 		margin-top: 23.5px;
+		@include mw(M) {
+			margin-top: 16px;
+		}
 	}
 	// .card_item
 	&_item {
 		position: relative;
 		@include d_f(flex);
 		padding: 24px;
+		@include mw(M) {
+			flex-direction: column;
+			padding: 16px;
+		}
 		& + & {
 			margin-top: 48px;
 		}
@@ -324,6 +352,11 @@ h4 {
 			max-width: 387px;
 			margin-right: 64px;
 			border-radius: 20px;
+			@include mw(M) {
+				max-width: 100%;
+				margin-right: 0;
+				margin-bottom: 32px;
+			}
 		}
 		// .card_item_txt
 		&_txt {
@@ -337,11 +370,24 @@ h4 {
 				bottom: 24px;
 				width: 100%;
 				max-width: 130px;
+				@include mw(M) {
+					position: relative;
+					bottom: 0;
+					right: 0;
+					max-width: calc(100% - 24px - 22px);
+					margin-top: 16px;
+					margin-right: 24px;
+				}
 			}
 			.icon_collect {
 				position: absolute;
 				top: 24px;
 				right: 24px;
+				@include mw(M) {
+					top: auto;
+					right: 16px;
+					bottom: 8px;
+				}
 			}
 		}
 	}
