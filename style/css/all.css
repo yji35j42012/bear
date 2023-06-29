@@ -141,11 +141,11 @@ select {
           transition-duration: 0.3s;
 }
 
-.normal_sel_txt, .normal_btn, .menu_item, .menu_btn, .page li, .icon_collect {
+.normal_sel_txt, .normal_btn, .normal_check, .menu_item, .menu_btn, .page li, .icon_collect {
   cursor: pointer;
 }
 
-h1 {
+h1:not(.logo) {
   color: #005f5f;
   font-size: 64px;
   font-family: Inter;
@@ -281,6 +281,61 @@ h4 {
           box-shadow: 0px 0px 0px 0px #333;
 }
 
+.normal_check {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #333;
+  font-size: 16px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.normal_check_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 20px;
+  height: 20px;
+  margin-right: 16px;
+  border-radius: 4px;
+  border: 2px solid #005f5f;
+}
+
+.normal_check_box::after {
+  content: "";
+  display: none;
+  width: 10px;
+  height: 5px;
+  border: 1px solid #005f5f;
+  border-width: 0 0 2px 2px;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+input:checked + .normal_check_box::after {
+  display: block;
+}
+
+.normal_check + .normal_check {
+  margin-top: 13px;
+}
+
+.course_func_sort + .normal_check {
+  margin-top: 8.5px;
+}
+
 .shadow {
   border: 2px solid #333;
   -webkit-box-shadow: 4px 4px 0px 0px #333;
@@ -300,7 +355,8 @@ h4 {
       grid-template-rows: auto 40px;
   min-height: 100%;
   padding-top: 56px;
-  background-color: #e5e5e5;
+  background-color: #b1d7d5;
+  background-image: url("../../images/bg.png");
 }
 
 .content {
@@ -636,7 +692,6 @@ h4 {
 }
 
 .card_item {
-  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -665,6 +720,9 @@ h4 {
 
 .card_item_pic {
   overflow: hidden;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
   max-width: 387px;
   margin-right: 64px;
   border-radius: 20px;
@@ -679,6 +737,7 @@ h4 {
 }
 
 .card_item_txt {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -692,14 +751,14 @@ h4 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  width: 100%;
   color: #333;
 }
 
 .card_item_txt .normal_btn {
   position: absolute;
-  right: 24px;
-  bottom: 24px;
-  width: 100%;
+  right: 0;
+  bottom: 0;
   max-width: 130px;
 }
 
@@ -716,15 +775,15 @@ h4 {
 
 .card_item_txt .icon_collect {
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 0;
+  right: 0;
 }
 
 @media screen and (max-width: 995px) {
   .card_item_txt .icon_collect {
     top: auto;
-    right: 16px;
-    bottom: 8px;
+    right: 0;
+    bottom: 0;
   }
 }
 
@@ -819,5 +878,216 @@ h4 {
 
 .icon_collect svg {
   fill: #fff;
+}
+
+.course_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-top: 100px;
+}
+
+.course_func {
+  width: 100%;
+  max-width: 260px;
+  margin-left: 28.5px;
+  padding: 30px;
+}
+
+.course_func_title {
+  margin-bottom: 23px;
+  color: #333;
+  font-size: 24px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 4.8px;
+  text-align: center;
+}
+
+.course_func .normal_sel + .normal_sel:after {
+  display: none;
+}
+
+.course_func .normal_sel + .normal_sel {
+  margin-left: 0;
+  margin-top: 30px;
+}
+
+.course_func_sort {
+  margin-top: 23px;
+  padding-bottom: 4px;
+  color: #333;
+  font-size: 16px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border-bottom: 2px solid #005f5f;
+}
+
+.course_card {
+  width: 100%;
+}
+
+.course_card_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  padding: 24px;
+}
+
+.course_card_item + .course_card_item {
+  margin-top: 48px;
+}
+
+.course_card_pic {
+  overflow: hidden;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  width: 100%;
+  max-width: 420px;
+  margin-right: 48px;
+  border-radius: 20px;
+}
+
+@media screen and (max-width: 1140px) {
+  .course_card_pic {
+    max-width: 360px;
+    margin-right: 24px;
+  }
+}
+
+.course_card_txt {
+  position: relative;
+}
+
+.course_card_txt .title {
+  color: #333;
+  font-size: 24px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 2.4px;
+}
+
+.course_card_txt .detail {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  /* 用來設定一個元素是水平還是垂直方向排列其內容 */
+  -webkit-line-clamp: 3;
+  /* 限制指定的行數 */
+  /* 其它瀏覽器降級方式：給定最大高度 */
+  /*max-height:48px;*/
+  margin-top: 24px;
+  color: #333;
+  font-size: 16px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 130.023%;
+  letter-spacing: 1.6px;
+}
+
+@media screen and (max-width: 1140px) {
+  .course_card_txt .detail {
+    margin-top: 12px;
+  }
+}
+
+.course_card_txt .price {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 24px;
+  padding-top: 24px;
+  color: #005f5f;
+  font-size: 14px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%;
+  letter-spacing: 1.4px;
+  border-top: 1px solid #333;
+}
+
+.course_card_txt .price::after {
+  content: "$" attr(data-price);
+  margin-left: 24px;
+  font-size: 24px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 160%;
+}
+
+@media screen and (max-width: 1140px) {
+  .course_card_txt .price {
+    margin-top: 12px;
+    padding-top: 12px;
+  }
+}
+
+.course_card_txt .time {
+  font-size: 16px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%;
+  color: #005f5f;
+}
+
+.course_card_txt .time::before {
+  content: attr(data-time);
+  display: block;
+}
+
+.course_card_txt .icon_collect {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+@media screen and (max-width: 995px) {
+  .course_card_txt .icon_collect {
+    top: auto;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.course_card_txt .normal_btn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 130px;
+}
+
+@media screen and (max-width: 995px) {
+  .course_card_txt .normal_btn {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    max-width: calc(100% - 24px - 22px);
+    margin-top: 16px;
+    margin-right: 24px;
+  }
 }
 /*# sourceMappingURL=all.css.map */
