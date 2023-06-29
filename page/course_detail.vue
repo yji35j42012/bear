@@ -1,7 +1,7 @@
 <style scoped></style>
 
 <template>
-	<router-view></router-view>
+	<div class="container">detialsdfasd</div>
 </template>
 
 <script>
@@ -12,15 +12,14 @@ module.exports = {
 		};
 	},
 	components: {},
-	mounted() {},
+	mounted() {
+		console.log(this.$route.params.detailId);
+	},
 	computed: {},
 	methods: {
 		course_more() {
 			console.log(this.$route.fullPath + "/123");
 			this.$router.push(this.$route.fullPath + "/123");
-			// this.$router.push(
-			// 	this.$route.fullPath + "/全部縣市/" + str + "/all"
-			// );
 		}
 	}
 };

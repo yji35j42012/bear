@@ -503,7 +503,9 @@ h4 {
 		max-width: 260px;
 		margin-left: 28.5px;
 		padding: 30px;
-
+		@include mw(M) {
+			display: none;
+		}
 		// .course_func_title
 		&_title {
 			margin-bottom: 23px;
@@ -548,6 +550,11 @@ h4 {
 			& + & {
 				margin-top: 48px;
 			}
+
+			@include mw(M) {
+				flex-direction: column;
+				padding: 16px;
+			}
 		}
 		// .course_card_pic
 		&_pic {
@@ -560,6 +567,11 @@ h4 {
 			@include mw(XL) {
 				max-width: 360px;
 				margin-right: 24px;
+			}
+			@include mw(M) {
+				max-width: 100%;
+				margin-right: 0;
+				margin-bottom: 32px;
 			}
 		}
 		// .course_card_txt
@@ -579,19 +591,18 @@ h4 {
 				display: -webkit-box;
 				-webkit-box-orient: vertical; /* 用來設定一個元素是水平還是垂直方向排列其內容 */
 				-webkit-line-clamp: 3; /* 限制指定的行數 */
-
 				/* 其它瀏覽器降級方式：給定最大高度 */
 				/*max-height:48px;*/
 				margin-top: 24px;
 				color: #333;
-				font-size: 16px;
-				font-family: Inter;
-				font-style: normal;
 				font-weight: 600;
 				line-height: 130.023%;
 				letter-spacing: 1.6px;
 				@include mw(XL) {
 					margin-top: 12px;
+				}
+				@include mw(M) {
+					-webkit-line-clamp: 2;
 				}
 			}
 			.price {
@@ -621,11 +632,6 @@ h4 {
 				}
 			}
 			.time {
-				font-size: 16px;
-				font-family: Inter;
-				font-style: normal;
-				font-weight: 500;
-				line-height: 160%;
 				color: $primaryColor;
 				&::before {
 					content: attr(data-time);

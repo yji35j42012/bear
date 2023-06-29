@@ -19,7 +19,7 @@
 					<router-link to="/">首頁</router-link>
 				</li>
 				<li class="menu_item">
-					<router-link to="/">廚藝教室</router-link>
+					<router-link to="/course">廚藝教室</router-link>
 				</li>
 				<li class="menu_item">
 					<router-link to="/">節氣食補</router-link>
@@ -60,7 +60,29 @@
 		const routes = [
 			{
 				path: "/",
+				component: httpVueLoader("./page/home.vue"),
+			},
+			{
+				path: "/course",
 				component: httpVueLoader("./page/course.vue"),
+				children: [
+					{
+						path: "/",
+						component: httpVueLoader(
+							"./page/course_out.vue"
+						),
+					},
+					{
+						path: ":detailId",
+						component: httpVueLoader(
+							"./page/course_detail.vue"
+						),
+					}
+				]
+			},
+			{
+				path: "/course/:detailId",
+				component: httpVueLoader("./page/course_detail.vue"),
 			},
 			{
 				path: "/map",
@@ -91,6 +113,7 @@
 			computed: {},
 			watch: {
 				$route(to, from) {
+					this.menuShow = false
 					var now = this.$route.path;
 					if ((now.split('home')[0] == 'home' || now.split('home')[0] == '/') && now.split('home')[1] !== '') {
 						this.nowPage = "detail";
