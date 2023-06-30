@@ -16,11 +16,6 @@ module.exports = {
 		console.log(this.$route.params.detailId);
 	},
 	computed: {},
-	methods: {
-		course_more() {
-			console.log(this.$route.fullPath + "/123");
-			this.$router.push(this.$route.fullPath + "/123");
-		}
-	}
+	methods: {}
 };
 </script>
