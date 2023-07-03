@@ -890,6 +890,15 @@ input:checked + .normal_check_box::after {
   margin-top: 100px;
 }
 
+.course_box._detail {
+  margin-top: 0;
+}
+
+.course_box .normal_btn {
+  width: 100%;
+  margin-top: 24px;
+}
+
 .course_func {
   width: 100%;
   max-width: 260px;
@@ -915,6 +924,10 @@ input:checked + .normal_check_box::after {
   text-align: center;
 }
 
+._detail .course_func_title {
+  color: #005f5f;
+}
+
 .course_func .normal_sel + .normal_sel:after {
   display: none;
 }
@@ -934,6 +947,42 @@ input:checked + .normal_check_box::after {
   font-weight: 700;
   line-height: normal;
   border-bottom: 2px solid #005f5f;
+}
+
+.course_func_pic {
+  max-width: 150px;
+  margin: 0 auto 24px;
+}
+
+.course_func_num {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 24px;
+  font-size: 16px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 3.2px;
+}
+
+.course_func_num:after {
+  color: #005f5f;
+}
+
+.course_func_num._people:after {
+  content: attr(data-txt) "人";
+}
+
+.course_func_num._price:after {
+  content: "$" attr(data-txt);
 }
 
 .course_card {
@@ -1111,5 +1160,34 @@ input:checked + .normal_check_box::after {
     margin-top: 16px;
     margin-right: 24px;
   }
+}
+
+.course_detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  padding: 24px;
+}
+
+.course_detail_pic {
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.course_detail_pic._half {
+  width: calc(50% - 8px);
+}
+
+.course_detail_txt {
+  padding: 16px 0;
 }
 /*# sourceMappingURL=all.css.map */

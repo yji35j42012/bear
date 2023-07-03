@@ -496,6 +496,14 @@ h4 {
 	&_box {
 		@include d_f(flex, none, flex-start);
 		margin-top: 100px;
+		&._detail {
+			margin-top: 0;
+		}
+
+		.normal_btn {
+			width: 100%;
+			margin-top: 24px;
+		}
 	}
 	// .course_func
 	&_func {
@@ -517,6 +525,10 @@ h4 {
 			line-height: normal;
 			letter-spacing: 4.8px;
 			text-align: center;
+
+			._detail & {
+				color: $primaryColor;
+			}
 		}
 
 		.normal_sel + .normal_sel:after {
@@ -538,6 +550,33 @@ h4 {
 			font-weight: 700;
 			line-height: normal;
 			border-bottom: 2px solid $primaryColor;
+		}
+
+		// .course_func_pic
+		&_pic {
+			max-width: 150px;
+			margin: 0 auto 24px;
+		}
+
+		// .course_func_num
+		&_num {
+			@include d_f(flex, space-between, center);
+			margin-top: 24px;
+			font-size: 16px;
+			font-family: Inter;
+			font-style: normal;
+			font-weight: 600;
+			line-height: normal;
+			letter-spacing: 3.2px;
+			&:after {
+				color: $primaryColor;
+			}
+			&._people:after {
+				content: attr(data-txt) "人";
+			}
+			&._price:after {
+				content: "$" attr(data-txt);
+			}
 		}
 	}
 	// .course_card
@@ -664,5 +703,27 @@ h4 {
 				}
 			}
 		}
+	}
+	// .course_detail
+	&_detail {
+		@include d_f(flex,space-between);
+		flex-wrap: wrap;
+		width: 100%;
+		padding: 24px;
+		// .course_detail_pic
+		&_pic {
+			overflow: hidden;
+			border-radius: 20px;
+
+			&._half{
+				width: calc(50% - 8px);
+			}
+		}
+		// .course_detail_txt
+		&_txt{
+			padding: 16px 0;
+		}
+
+
 	}
 }
