@@ -498,6 +498,9 @@ h4 {
 		margin-top: 100px;
 		&._detail {
 			margin-top: 0;
+			@include mw(M) {
+				flex-direction: column-reverse;
+			}
 		}
 
 		.normal_btn {
@@ -507,13 +510,23 @@ h4 {
 	}
 	// .course_func
 	&_func {
+		position: relative;
 		width: 100%;
 		max-width: 260px;
 		margin-left: 28.5px;
 		padding: 30px;
+
 		@include mw(M) {
-			display: none;
+			&:not(._detail) {
+				display: none;
+			}
+			&._detail {
+				max-width: 100%;
+				margin-left: 0;
+				margin-bottom: 48px;
+			}
 		}
+
 		// .course_func_title
 		&_title {
 			margin-bottom: 23px;
@@ -527,7 +540,12 @@ h4 {
 			text-align: center;
 
 			._detail & {
+				@include d_f(flex, center, center);
 				color: $primaryColor;
+				letter-spacing: 2.4px;
+				.icon_collect {
+					@include d_f(flex, center, center);
+				}
 			}
 		}
 
@@ -706,24 +724,31 @@ h4 {
 	}
 	// .course_detail
 	&_detail {
-		@include d_f(flex,space-between);
+		@include d_f(flex, space-between);
 		flex-wrap: wrap;
 		width: 100%;
 		padding: 24px;
 		// .course_detail_pic
 		&_pic {
 			overflow: hidden;
+			width: 100%;
 			border-radius: 20px;
 
-			&._half{
+			&._half {
 				width: calc(50% - 8px);
+			}
+			@include mw(M) {
+				&._half {
+					width: 100%;
+				}
+				& + & {
+					margin-top: 16px;
+				}
 			}
 		}
 		// .course_detail_txt
-		&_txt{
+		&_txt {
 			padding: 16px 0;
 		}
-
-
 	}
 }
